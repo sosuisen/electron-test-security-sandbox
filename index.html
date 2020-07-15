@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <script type='text/javascript' src='./renderer.js'></script>
+  </head>
+  <body>
+    <div style="position: fixed; top:0px; padding-top: 10px; background-color: white;">
+    output
+    <input
+      type="button"
+      onclick="document.getElementById('result').innerHTML=''"
+      value="clear"
+    />
+    <div
+      id="result"
+      style="width:700px; height:70px; border:1px solid black; overflow-y: scroll"
+    ></div>
+  </div>
+  <h1 style="margin-top: 100px;">&lt;iframe&gt; security playground</h1>
+
+    <h2>./frame.html</h2>    
+    <input
+      type='button'
+      onclick='postToChild("01", "Hello from parent via postMessage", "file://")'
+      value="Hello to child via postMessage, targetOrigin 'file://'"
+    />
+    <input
+      type='button'
+      onclick='sayToChild("01", "Hello from parent via contentsWindow")'
+      value="Hello to child via contentsWindow"
+    />
+    <br><br>
+    <iframe id='childFrame01' src='./frame.html' sandbox='allow-same-origin allow-scripts' style='width:500px; height:150px; border: 1px solid black;'></iframe>
+    <br/><br />
+    
+    <h2>https://canal874-jstest-iframe-childcontents.netlify.app/child.html</h2>    
+    <input
+      type='button'
+      onclick='postToChild("02", "Hello from parent via postMessage", "file://")'
+      value="Hello to child via postMessage, targetOrigin 'file://'"
+    />
+    <input
+      type='button'
+      onclick='sayToChild("02", "Hello from parent via contentsWindow")'
+      value="Hello to child via contentsWindow"
+    />
+    <br>
+    <br>
+    <iframe id='childFrame02' src='https://canal874-jstest-iframe-childcontents.netlify.app/child.html' sandbox='allow-same-origin allow-scripts' style='width:500px; height:150px; border: 1px solid black;'></iframe>
+    <p>[parent]</p>
+
+  </body>
+</html>
