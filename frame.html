@@ -3,7 +3,8 @@
 </head>
 <body style="font-size:14px">
   <input type="button" onclick="postToParent('Hello from child via postMessage', 'file://')" value="Hello to parent via postMessage, targetOrigin 'file://''"><br>
-  <input type="button" onclick="sayToParent('Hello from child via window.parent')" value="Hello to parent via window.parent">
+  <input type="button" onclick="sayToParentInGlobalScope('Hello from child via window.parent (Global Scope)')" value="Hello to parent via window.parent (Global Scope)">
+  <input type="button" onclick="sayToParentInBlockScope('Hello from child via window.parent (Block Scope)')" value="Hello to parent via window.parent (Block Scope)">  
   <hr>
   output <input type="button" onclick="document.getElementById('result').innerHTML=''" value="clear"><br />
   <div id="result" style="width:100%; height:100%; border:1px solid black"> </div>

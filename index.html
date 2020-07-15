@@ -28,28 +28,39 @@
     />
     <input
       type='button'
-      onclick='sayToChild("01", "Hello from parent via contentsWindow")'
-      value="Hello to child via contentsWindow"
+      onclick='sayToChildInGlobalScope("01", "Hello from parent via contentsWindow (Global Scope)")'
+      value="Hello to child via contentsWindow (Global Scope)"
+    />
+    <input
+      type='button'
+      onclick='sayToChildInBlockScope("01", "Hello from parent via contentsWindow (Block Scope)")'
+      value="Hello to child via contentsWindow (Block Scope)"
     />
     <br><br>
     <iframe id='childFrame01' src='./frame.html' sandbox='allow-same-origin allow-scripts' style='width:500px; height:150px; border: 1px solid black;'></iframe>
     <br/><br />
     
-    <h2>https://canal874-jstest-iframe-childcontents.netlify.app/child.html</h2>    
+    <h2>https://canal874-electron-test-security-sandbox.netlify.app/frame.html</h2>
     <input
       type='button'
       onclick='postToChild("02", "Hello from parent via postMessage", "file://")'
       value="Hello to child via postMessage, targetOrigin 'file://'"
     />
+
     <input
       type='button'
-      onclick='sayToChild("02", "Hello from parent via contentsWindow")'
-      value="Hello to child via contentsWindow"
+      onclick='sayToChildInGlobalScope("02", "Hello from parent via contentsWindow (Global Scope)")'
+      value="Hello to child via contentsWindow (Global Scope)"
     />
+    <input
+      type='button'
+      onclick='sayToChildInBlockScope("02", "Hello from parent via contentsWindow (Block Scope)")'
+      value="Hello to child via contentsWindow (Block Scope)"
+    />
+
     <br>
     <br>
-    <iframe id='childFrame02' src='https://canal874-jstest-iframe-childcontents.netlify.app/child.html' sandbox='allow-same-origin allow-scripts' style='width:500px; height:150px; border: 1px solid black;'></iframe>
-    <p>[parent]</p>
+    <iframe id='childFrame02' src='https://canal874-electron-test-security-sandbox.netlify.app/frame.html'' sandbox='allow-same-origin allow-scripts' style='width:500px; height:150px; border: 1px solid black;'></iframe>
 
   </body>
 </html>

@@ -6,15 +6,23 @@ function receiveMessage(event) {
     return;
   }
   if (event.data.command === "say" && event.data.arg !== undefined) {
-    say(event.data.arg);
+    sayInBlockScope(event.data.arg);
   }
 }
 
-function sayToParent(txt){
+function sayToParentInGlobalScope(txt){
   try{
-    parent.say(txt);
+    parent.sayInGlobalScope(txt);
   } catch(e){
-    say(`sayToParent() error: ${e}`);
+    sayInBlockScope(`sayToParentInGlobalScope() error: ${e}`);
+  }
+}
+
+function sayToParentInBlockScope(txt){
+  try{
+    parent.sayInBlockScope(txt);
+  } catch(e){
+    sayInBlockScope(`sayToParentInBlockScope() error: ${e}`);
   }
 }
 
@@ -22,7 +30,11 @@ function postToParent(txt, targetOrigin){
   parent.postMessage({ command: "say", arg: txt }, targetOrigin);
 }
 
-function say(txt) {
+function sayInGlobalScope(txt) {
+  document.getElementById("result").insertAdjacentHTML("beforeend", `${txt}<br>`);
+}
+
+const sayInBlockScope = (txt) => {
   document.getElementById("result").insertAdjacentHTML("beforeend", `${txt}<br>`);
 }
 

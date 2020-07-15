@@ -8,18 +8,33 @@ function postToChild(targetFrame, txt, targetOrigin) {
       .getElementById("childFrame" + targetFrame)
       .contentWindow.postMessage({ command: "say", arg: txt }, targetOrigin);
   } catch (e) {
-    say(`postToChild() error: ${e}`);
+    sayInBlockScope(`postToChild() error: ${e}`);
   }
 }
 
-function sayToChild(targetFrame, txt) {
+function sayToChildInGlobalScope(targetFrame, txt) {
   try {
-    document.getElementById("childFrame" + targetFrame).contentWindow.say(txt);
+    document.getElementById("childFrame" + targetFrame).contentWindow.sayInGlobalScope(txt);
   } catch (e) {
-    say(`sayToChild() error: ${e}`);
+    sayInBlockScope(`sayToChildInGlobalScope() error: ${e}`);
   }
 }
-function say(txt){
+
+function sayToChildInBlockScope(targetFrame, txt) {
+  try {
+    document.getElementById("childFrame" + targetFrame).contentWindow.sayInBlockScope(txt);
+  } catch (e) {
+    sayInBlockScope(`sayToChildInBlockScope() error: ${e}`);
+  }
+}
+
+function sayInGlobalScope(txt){
+  document
+    .getElementById("result")
+    .insertAdjacentHTML("beforeend", `${txt}<br>`);
+}
+
+const sayInBlockScope = (txt) => {
   document
     .getElementById("result")
     .insertAdjacentHTML("beforeend", `${txt}<br>`);
@@ -27,14 +42,14 @@ function say(txt){
 
 function receiveMessage(event) {
   if(event.origin !== 'file://'){
-    say('invalid origin');
+    sayInBlockScope('invalid origin');
     return;
   }
   if (!event.data.command) {
     return;
   }
   if (event.data.command === "say" && event.data.arg !== undefined) {
-    say(event.data.arg);
+    sayInBlockScope(event.data.arg);
   }
 }
 
