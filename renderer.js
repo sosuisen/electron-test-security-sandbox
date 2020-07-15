@@ -1,8 +1,5 @@
-document.write = () => { console.error('document.write() is disabled.')};
-window.eval = () => { console.error('document.write() is disabled.') };
-window.alert = () => { console.error('document.write() is disabled.') };
 
-function postToChild(targetFrame, txt, targetOrigin) {
+const postToChild = (targetFrame, txt, targetOrigin) => {
   try {
     document
       .getElementById("childFrame" + targetFrame)
@@ -12,7 +9,7 @@ function postToChild(targetFrame, txt, targetOrigin) {
   }
 }
 
-function sayToChildInGlobalScope(targetFrame, txt) {
+const sayToChildInGlobalScope = (targetFrame, txt) => {
   try {
     document.getElementById("childFrame" + targetFrame).contentWindow.sayInGlobalScope(txt);
   } catch (e) {
@@ -20,7 +17,7 @@ function sayToChildInGlobalScope(targetFrame, txt) {
   }
 }
 
-function sayToChildInBlockScope(targetFrame, txt) {
+const sayToChildInBlockScope = (targetFrame, txt) => {
   try {
     document.getElementById("childFrame" + targetFrame).contentWindow.sayInBlockScope(txt);
   } catch (e) {
@@ -40,7 +37,7 @@ const sayInBlockScope = (txt) => {
     .insertAdjacentHTML("beforeend", `${txt}<br>`);
 }
 
-function receiveMessage(event) {
+const receiveMessage = (event) => {
   if(event.origin !== 'file://'){
     sayInBlockScope('invalid origin');
     return;

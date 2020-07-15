@@ -1,4 +1,4 @@
-function receiveMessage(event) {
+const receiveMessage = (event) => {
   if(event.origin !== 'file://'){
     return;
   }
@@ -10,7 +10,7 @@ function receiveMessage(event) {
   }
 }
 
-function sayToParentInGlobalScope(txt){
+const sayToParentInGlobalScope = (txt) => {
   try{
     parent.sayInGlobalScope(txt);
   } catch(e){
@@ -18,7 +18,7 @@ function sayToParentInGlobalScope(txt){
   }
 }
 
-function sayToParentInBlockScope(txt){
+const sayToParentInBlockScope = (txt) => {
   try{
     parent.sayInBlockScope(txt);
   } catch(e){
@@ -26,7 +26,7 @@ function sayToParentInBlockScope(txt){
   }
 }
 
-function postToParent(txt, targetOrigin){
+const postToParent = (txt, targetOrigin) => {
   parent.postMessage({ command: "say", arg: txt }, targetOrigin);
 }
 

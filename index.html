@@ -25,12 +25,12 @@
       type='button'
       onclick='postToChild("01", "Hello from parent via postMessage", "file://")'
       value="Hello to child via postMessage, targetOrigin 'file://'"
-    />
+    /><br>
     <input
       type='button'
       onclick='sayToChildInGlobalScope("01", "Hello from parent via contentsWindow (Global Scope)")'
       value="Hello to child via contentsWindow (Global Scope)"
-    />
+    /><br>
     <input
       type='button'
       onclick='sayToChildInBlockScope("01", "Hello from parent via contentsWindow (Block Scope)")'
@@ -45,13 +45,12 @@
       type='button'
       onclick='postToChild("02", "Hello from parent via postMessage", "file://")'
       value="Hello to child via postMessage, targetOrigin 'file://'"
-    />
-
+    /><br>
     <input
       type='button'
       onclick='sayToChildInGlobalScope("02", "Hello from parent via contentsWindow (Global Scope)")'
       value="Hello to child via contentsWindow (Global Scope)"
-    />
+    /><br>
     <input
       type='button'
       onclick='sayToChildInBlockScope("02", "Hello from parent via contentsWindow (Block Scope)")'
