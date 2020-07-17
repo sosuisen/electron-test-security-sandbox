@@ -65,6 +65,7 @@
       &lt;iframe sandbox='allow-scripts' src='./frame02.html'&gt;
     </p>
     <p style="color: red">
+      [Developer Tools console] "Not allowed to load local resource: file:///E:/src/electron-test/electron-test-security-sandbox/frame02.html"<br>
       [Developer Tools console] "Not allowed to load local resource: file:///E:/src/electron-test/electron-test-security-sandbox/frame02.js"
     </p>
     
@@ -121,18 +122,23 @@
       type='button'
       onclick='postToChild("04", "Hello from parent via postMessage", "file://")'
       value="Hello to child via postMessage, targetOrigin 'file://'"
-    /><br>
+    /> => Nothing happens because the targetOrigin file:// is different from https:// resource.<br>
+    <input
+      type='button'
+      onclick='postToChild("04", "Hello from parent via postMessage", "*")'
+      value="Hello to child via postMessage, targetOrigin '*'"
+    /> => Pass<br>
     <input
       type='button'
       onclick='sayToChildInGlobalScope("04", "Hello from parent via contentsWindow (Global Scope)")'
       value="Hello to child via contentsWindow (Global Scope)"
-    /><br>
+    /> => [Top frame] "sayToChildInGlobalScope() error: SecurityError: Blocked a frame with origin "file://" from accessing a cross-origin frame."
+    <br>
     <input
       type='button'
       onclick='sayToChildInBlockScope("04", "Hello from parent via contentsWindow (Block Scope)")'
       value="Hello to child via contentsWindow (Block Scope)"
-    />
-
+    /> => [Top frame] "sayToChildInBlockScope() error: SecurityError: Blocked a frame with origin "file://" from accessing a cross-origin frame."
     <br>
     <br>
     [childFrame04]<br>    

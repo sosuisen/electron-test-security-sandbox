@@ -36,7 +36,7 @@ const sayInBlockScope = (txt) => {
 
 const receiveMessage = (event) => {
   if(event.origin !== 'file://'){
-    sayInBlockScope('invalid origin');
+    sayInBlockScope('Not expected origin (file://): ' + event.origin);    
     return;
   }
   if (!event.data.command) {
