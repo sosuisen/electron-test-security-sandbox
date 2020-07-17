@@ -16,14 +16,27 @@ app.on('ready', function () {
     }
   })
 
-  cardWindow.loadURL(
-          url.format({
+  const indexUrl = url.format({
             pathname: path.join(__dirname, 'index.html'),
             protocol: 'file:',
             slashes: true,
-          })
-        );
+          });
+  cardWindow.loadURL(indexUrl);
   // Open the DevTools.
   cardWindow.webContents.openDevTools();
   cardWindow.show();
+
+  cardWindow.webContents.on('will-navigate', (event, url) => {
+    // block page transition
+    const prevUrl = indexUrl.replace(/\\/g,'/');
+    if (url === prevUrl) {
+      console.info('reload() is not permitted');
+      event.preventDefault();
+    }
+    else {
+      console.error('Page navigation is not permitted.');
+      event.preventDefault();
+    }
+  })
 });
+

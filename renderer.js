@@ -52,7 +52,6 @@ const localDoc = {};
 const removeGlobalPropertiesExcept = [
   'document',
   'location',
-  'frames',
   'postMessage'
 ];
 
@@ -69,6 +68,7 @@ const removeGlobalProperties = () => {
         }
         else if(typeof window[prop] === 'object'){
           localWin[prop] = window[prop];
+          window[prop] = {};
           delete window[prop];
         }
         else {
@@ -80,13 +80,16 @@ const removeGlobalProperties = () => {
       }
     }
   }
+
   for (let prop in window.document) {
     console.log(prop + ': ' + typeof window.document[prop]);
     try {
       if(typeof window.document[prop] === 'function'){
-        // bind window.document to keep 'this'
-        localDoc[prop] = window.document[prop].bind(window.document);
-        window.document[prop] = () => { console.error(prop + ' is disabled.'); };
+        if(!prop.match(/^getElement/) && !prop.match(/^querySelector/)){
+          // bind window.document to keep 'this'
+          localDoc[prop] = window.document[prop].bind(window.document);
+          window.document[prop] = () => { console.error(prop + ' is disabled.'); };
+        }
       }
       else if(typeof window.document[prop] === 'object'){
         localDoc[prop] = window.document[prop];
