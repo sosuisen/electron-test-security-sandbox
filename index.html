@@ -35,7 +35,7 @@
     <h2>(A) Load file:// resource on iframe</h2>
     <p>
       No sandbox<br>
-      &lt;iframe src='./frame01.html'&gt;
+      &lt;iframe src='./frame01.html' /&gt;
     </p>  
     <input
       type='button'
@@ -55,14 +55,14 @@
 
     <br><br>
     [childFrame]<br>
-    <iframe id='childFrame01' src='./frame01.html' style='width:500px; height:200px; border: 1px solid black;'></iframe>
+    <iframe id='childFrame01' src='./frame01.html' style='width:700px; height:200px; border: 1px solid black;'></iframe>
     <br/><br />
 
 
     <h2>(B) Load file:// resource on iframe with sandbox</h2>
     <p>
       Sandox with no allow-same-origin<br>
-      &lt;iframe sandbox='allow-scripts' src='./frame02.html'&gt;
+      &lt;iframe sandbox='allow-scripts' src='./frame02.html' /&gt;
     </p>
     <p style="color: red">
       [Developer Tools console] "Not allowed to load local resource: file:///E:/src/electron-test/electron-test-security-sandbox/frame02.html"<br>
@@ -82,14 +82,14 @@
     "<br>
     <br>
     [childFrame02]<br>
-    <iframe id='childFrame02' src='./frame02.html' sandbox='allow-scripts' style='width:500px; height:150px; border: 1px solid black;'></iframe>
+    <iframe id='childFrame02' src='./frame02.html' sandbox='allow-scripts' style='width:700px; height:150px; border: 1px solid black;'></iframe>
     <br/><br />
 
 
     <h2>(C) Load file:// resource on iframe with allow-same-origin</h2>    
     <p>
       Sandox with allow-same-origin<br>
-      &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame03.html'&gt;
+      &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame03.html' /&gt;
     </p>
     <input
       type='button'
@@ -109,14 +109,16 @@
 "
     <br><br>
     [childFrame03]<br>
-    <iframe id='childFrame03' src='./frame03.html' sandbox='allow-same-origin allow-scripts' style='width:500px; height:250px; border: 1px solid black;'></iframe>
+    <iframe id='childFrame03' src='./frame03.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:250px; border: 1px solid black;'></iframe>
     <br/><br />
+
+
 
     
     <h2>(D) Load https:// resource on iframe with allow-same-origin</h2>
     <p>
       Sandox with allow-same-origin<br>
-      &lt;iframe sandbox='allow-same-origin allow-scripts' src='https://canal874-electron-test-security-sandbox.netlify.app/frame.html'&gt;
+      &lt;iframe sandbox='allow-same-origin allow-scripts' src='https://canal874-electron-test-security-sandbox.netlify.app/frame.html' /&gt;
     </p>
     <input
       type='button'
@@ -142,25 +144,34 @@
     <br>
     <br>
     [childFrame04]<br>    
-    <iframe id='childFrame04' src='https://canal874-electron-test-security-sandbox.netlify.app/frame.html'' sandbox='allow-same-origin allow-scripts' style='width:500px; height:150px; border: 1px solid black;'></iframe>
+    <iframe id='childFrame04' src='https://canal874-electron-test-security-sandbox.netlify.app/frame.html'' sandbox='allow-same-origin allow-scripts' style='width:700px; height:300px; border: 1px solid black;'></iframe>
 
-    <!--    
+
     <br>
     <br>
-    <h2>(D-1) Page navigation</h2>
+    <h2>(E) Page navigation</h2>
     <p>
-    The sandbox is set to 'allow-same-origin allow-scripts'.
+    Sandbox with no allow-top-navigation<br>
+    &lt;iframe sandbox='allow-same-origin allow-scripts allow-top-navigation' src='./frame_navigation.html' /&gt;
+    Page navigation and reload() are blocked in Main process by preventing 'will-navigate' event.<br>    
     </p>
-    [childFrame03-1]<br>
-    <iframe id='childFrame03-1' src='./frame_navigation.html' sandbox='allow-same-origin allow-scripts' style='width:500px; height:150px; border: 1px solid black;'></iframe>
+    [childFrame05]<br>
+    <iframe id='childFrame05' src='./frame05.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:250px; border: 1px solid black;'></iframe>
+    
+    
     <br/><br />   
-    <h2>(D-2) Page navigation with allow-top-navigation</h2>
+    <h2>(F) Page navigation with allow-top-navigation</h2>
     <p>
-    The sandbox is set to 'allow-same-origin allow-scripts allow-top-navigation'.
+    Sandbox with allow-top-navigation<br>
+    &lt;iframe sandbox='allow-same-origin allow-scripts allow-top-navigation' src='./frame_navigation.html' /&gt;
+    Page navigation and reload() are blocked in Main process by preventing 'will-navigate' event.<br>    
     </p>
-    [childFrame03-2]<br>    
-    <iframe id='childFrame03-2' src='./frame_navigation.html' sandbox='allow-same-origin allow-scripts allow-top-navigation' style='width:500px; height:150px; border: 1px solid black;'></iframe>
+    [childFrame06]<br>    
+    <iframe id='childFrame06' src='./frame06.html' sandbox='allow-same-origin allow-scripts allow-top-navigation' style='width:700px; height:150px; border: 1px solid black;'></iframe>
     <br/><br />   
+
+
+        <!--    
     <h2>(E) Remove properties of window and window.document, try to change DOM</h2>
     <input type='button' onclick='changeDOM("Changed")' value='Change div01' /><br>    
     <input type='button' onclick='removeGlobalProperties()' value='Remove properties' /><br>
@@ -169,12 +180,12 @@
     <br>
     <br>
     [childFrame04]<br>
-    <iframe id='childFrame04' src='./frame.html' sandbox='allow-same-origin allow-scripts' style='width:500px; height:150px; border: 1px solid black;'></iframe>
+    <iframe id='childFrame04' src='./frame.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:150px; border: 1px solid black;'></iframe>
 
     <h2>(F) Remove properties of window and window.document, try to navigate</h2>    
     <input type='button' onclick='removeGlobalProperties()' value='Remove properties' /><br>
     [childFrame05]<br>
-    <iframe id='childFrame05' src='./frame_remove_attr.html' sandbox='allow-same-origin allow-scripts' style='width:500px; height:150px; border: 1px solid black;'></iframe>
+    <iframe id='childFrame05' src='./frame_remove_attr.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:150px; border: 1px solid black;'></iframe>
     <br/><br />
 -->
      </body>

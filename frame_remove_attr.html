@@ -1,0 +1,11 @@
+<head>
+  <script type="text/javascript" src="./frame.js"></script>
+</head>
+<body style="font-size:14px">
+  <input type="button" onclick="setAttrOfIframe('childFrame05', 'sandbox', 'allow-same-origin allow-scripts allow-top-navigation')" value="Remove sandbox from childFrame04">  <br>
+  <input type='button' onclick='parent.location.href="https://google.com/"' value='Open https://google.com/' in parent/><br>
+  <hr>
+  output <input type="button" onclick="document.getElementById('result').innerHTML=''" value="clear"><br />
+  <div id="result" style="width:100%; height:100%; border:1px solid black"> </div>
+</body>
+</html>
