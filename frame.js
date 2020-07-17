@@ -1,5 +1,7 @@
 const receiveMessage = (event) => {
+  console.log('event.origin: ' + event.origin);
   if(event.origin !== 'file://'){
+    sayInBlockScope('Not expected origin (file://): ' + event.origin);
     return;
   }
   if (!event.data.command) {
@@ -36,6 +38,16 @@ function sayInGlobalScope(txt) {
 
 const sayInBlockScope = (txt) => {
   document.getElementById("result").insertAdjacentHTML("beforeend", `${txt}<br>`);
+}
+
+const setAttrOfIframe = (id, attrName, value) => {
+  const children = parent.document.body.childNodes;
+  for (let i = 0; i < children.length; i++) {
+    if(children[i].id == id){
+      children[i].setAttribute(attrName, value);
+      sayInBlockScope(attrName + ' is set to ' + value);
+    }
+  }
 }
 
 window.addEventListener("message", receiveMessage, false);
