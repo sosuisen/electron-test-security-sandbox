@@ -144,7 +144,7 @@
     <br>
     <br>
     [childFrame04]<br>    
-    <iframe id='childFrame04' src='https://canal874-electron-test-security-sandbox.netlify.app/frame.html'' sandbox='allow-same-origin allow-scripts' style='width:700px; height:300px; border: 1px solid black;'></iframe>
+    <iframe id='childFrame04' src='https://canal874-electron-test-security-sandbox.netlify.app/frame.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:300px; border: 1px solid black;'></iframe>
 
 
     <br>
@@ -171,23 +171,35 @@
     <br/><br />   
 
 
-        <!--    
-    <h2>(E) Remove properties of window and window.document, try to change DOM</h2>
-    <input type='button' onclick='changeDOM("Changed")' value='Change div01' /><br>    
-    <input type='button' onclick='removeGlobalProperties()' value='Remove properties' /><br>
-    <input type='button' onclick='changeDOM("Changed again")' value='Change div01 again' /><br>    
-    <div id='div01' style='border:1px solid black'>&lt;div01&gt;</div>
-    <br>
-    <br>
-    [childFrame04]<br>
-    <iframe id='childFrame04' src='./frame.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:150px; border: 1px solid black;'></iframe>
+        <br/><br />   
+    <h2>(G) Page navigation in iframe</h2>
+    <p>
+    &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame07.html' /&gt;
+    </p>
+    [childFrame07]<br>    
+    <iframe id='childFrame07' src='./frame07.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:150px; border: 1px solid black;'></iframe>
+    <br/><br />   
 
-    <h2>(F) Remove properties of window and window.document, try to navigate</h2>    
-    <input type='button' onclick='removeGlobalProperties()' value='Remove properties' /><br>
-    [childFrame05]<br>
-    <iframe id='childFrame05' src='./frame_remove_attr.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:150px; border: 1px solid black;'></iframe>
+            <br/><br />   
+    <h2>(H) Load https:// resource on file:// resource of iframe</h2>
+    <p>
+    &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame08.html' /&gt;<br>
+    Load &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt; in iframe<br>
+    => [output] "jQuery is loaded."
+    </p>
+    [childFrame08]<br>    
+    <iframe id='childFrame08' src='./frame08.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:150px; border: 1px solid black;'></iframe>
+    <br/><br />   
+
+
+    <h2>(I) Add allow-popups from iframe, and then try window.open()</h2>    
+    <p>
+    &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame08.html' /&gt;<br>
+    </p>
+    [childFrame09]<br>
+    <iframe id='childFrame09' src='./frame09.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:300px; border: 1px solid black;'></iframe>
     <br/><br />
--->
+
      </body>
 
 

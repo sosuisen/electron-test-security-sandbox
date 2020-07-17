@@ -3,8 +3,8 @@
   <script type="text/javascript" src="./frame.js"></script>
 </head>
 <body style="font-size:14px">
-  <input type='button' onclick='parent.location.reload()' value='Reload parent' /> => [Main process console] "reload() is not permitted"<br>
-  <input type='button' onclick='parent.location.href="https://google.com/"' value='Open https://google.com/' in parent/> => [Developer Tools console] "Unsafe JavaScript attempt to initiate navigation for frame with URL 'file:///E:/src/electron-test/electron-test-security-sandbox/index.html' from frame with URL 'file:///E:/src/electron-test/electron-test-security-sandbox/frame05.html'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.<br><br>
+  <input type='button' onclick='parent.location.reload()' value='Reload parent' /> => Top frame is reloaded, and [Main process console] says "reload() is permitted"<br>
+  <input type='button' onclick='parent.location.href="https://google.com/"' value='Open https://google.com/ in parent'/> => [Developer Tools console] "Unsafe JavaScript attempt to initiate navigation for frame with URL 'file:///E:/src/electron-test/electron-test-security-sandbox/index.html' from frame with URL 'file:///E:/src/electron-test/electron-test-security-sandbox/frame05.html'. The frame attempting navigation of the top-level window is sandboxed, but the flag of 'allow-top-navigation' or 'allow-top-navigation-by-user-activation' is not set.<br><br>
   Uncaught DOMException: Failed to set the 'href' property on 'Location': The current window does not have permission to navigate the target frame to 'https://google.com/'.
 </body>
 </html>

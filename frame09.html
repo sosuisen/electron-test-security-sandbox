@@ -1,0 +1,15 @@
+<head>
+  <script type="text/javascript" src="./frame.js"></script>
+</head>
+<body style="font-size:14px">
+  <input type="button" onclick="setAttrOfIframe('childFrame09', 'sandbox', 'allow-same-origin allow-scripts allow-popups')" value="Add allow-popups (It's tamper)"> [output] "sandbox is set to allow-same-origin allow-scripts allow-popups" <br>
+  <input type='button' onclick='window.open()' value='window.open()'/> => The tamper is not applied to iframe until reloaded, so [Developer Tools console] says "Blocked opening '' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set."<br>
+  <input type='button' onclick='parent.window.open()' value='parent.window.open()'/> => [Developer Tools console] "open is disabled"<br>
+  <input type='button' onclick='window.location.reload()' value='Reload this iframe'/> => Top frame is reloaded to remove tamper<br>
+  <input type='button' onclick='removeAPIs()' value='removeAPIs'/> => More secure. <br>
+  <input type='button' onclick='window.open()' value='window.open()'/> => [Developer Tools console] "open is disabled"<br>
+  <hr>
+  output <input type="button" onclick="document.getElementById('result').innerHTML=''" value="clear"><br />
+  <div id="result" style="width:100%; height:100%; border:1px solid black"> </div>
+</body>
+</html>

@@ -50,4 +50,34 @@ const setAttrOfIframe = (id, attrName, value) => {
   }
 }
 
+const removeAPIs = () => {
+  // Remove APIs
+  const disableAPIList = [
+    'open',
+    'alert',
+    'confirm',
+    'prompt',
+    'print'
+  ];
+  disableAPIList.forEach((prop) => {
+    window[prop] = () => { console.error(prop + ' is disabled.'); };
+  });
+};
+
+const onload = () => {
+  // Remove APIs
+  /* 
+  const disableAPIList = [
+    'open',
+    'alert',
+    'confirm',
+    'prompt',
+    'print'
+  ];
+  disableAPIList.forEach((prop) => {
+    window[prop] = () => { console.error(prop + ' is disabled.'); };
+  });
+  */
+};
 window.addEventListener("message", receiveMessage, false);
+window.addEventListener('load', onload);

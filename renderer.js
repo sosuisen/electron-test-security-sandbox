@@ -26,6 +26,14 @@ const sayToChildInBlockScope = (targetFrame, txt) => {
   }
 }
 
+const documentWriteToChild = (targetFrame, txt) => {
+  try {
+    document.getElementById("childFrame" + targetFrame).contentWindow.document.write(txt);
+  } catch (e) {
+    sayInBlockScope(`documentWriteToChild() error: ${e}`);
+  }
+}
+
 function sayInGlobalScope(txt){
   result.insertAdjacentHTML("beforeend", `${txt}<br>`);
 }
@@ -105,19 +113,21 @@ const removeGlobalProperties = () => {
   }
 }
 
-const changeDOM = (txt) => {
-  const div = document.getElementById('div01');
-  if (div) {
-    div.innerText = txt;
-  }
-  else {
-    sayInBlockScope('Cannot get div element');
-  }
-}
-
 const onload = () => {
   console.log('loaded');
   result = document.getElementById("result");
+
+  // Remove APIs
+  const disableAPIList = [
+    'open',
+    'alert',
+    'confirm',
+    'prompt',
+    'print'
+  ];
+  disableAPIList.forEach((prop) => {
+    window[prop] = () => { console.error(prop + ' is disabled.'); };
+  });
 };
 
 window.addEventListener("message", receiveMessage, false);
