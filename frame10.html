@@ -1,0 +1,13 @@
+<head>
+  <script type="text/javascript" src="./frame.js"></script>
+</head>
+<body style="font-size:14px">
+  <input type='button' onclick='window.open()' value='window.open()'/> => A new window is opened."<br>
+  <input type='button' onclick='parent.window.open()' value='parent.window.open()'/> => [Developer Tools console] "open is disabled"<br>
+  <input type='button' onclick='removeAPIs()' value='removeAPIs'/> => Remove window.open API. <br>
+  <input type='button' onclick='window.open()' value='window.open()'/> => [Developer Tools console] "open is disabled"<br>
+  <hr>
+  output <input type="button" onclick="document.getElementById('result').innerHTML=''" value="clear"><br />
+  <div id="result" style="width:100%; height:100%; border:1px solid black"> </div>
+</body>
+</html>

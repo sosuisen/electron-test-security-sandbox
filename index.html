@@ -194,10 +194,19 @@
 
     <h2>(I) Add allow-popups from iframe, and then try window.open()</h2>    
     <p>
-    &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame08.html' /&gt;<br>
+    &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame09.html' /&gt;<br>
     </p>
     [childFrame09]<br>
-    <iframe id='childFrame09' src='./frame09.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:300px; border: 1px solid black;'></iframe>
+    <iframe id='childFrame09' src='./frame09.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:200px; border: 1px solid black;'></iframe>
+    <br/><br />
+
+
+    <h2>(J) window.open() with allow_-popups/h2>    
+    <p>
+    &lt;iframe sandbox='allow-same-origin allow-scripts allow-popups' src='./frame10.html' /&gt;<br>
+    </p>
+    [childFrame10]<br>
+    <iframe id='childFrame10' src='./frame10.html' sandbox='allow-same-origin allow-scripts allow-popups' style='width:700px; height:150px; border: 1px solid black;'></iframe>
     <br/><br />
 
      </body>

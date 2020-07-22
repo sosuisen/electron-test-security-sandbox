@@ -6,7 +6,7 @@
   <input type='button' onclick='window.open()' value='window.open()'/> => The tamper is not applied to iframe until reloaded, so [Developer Tools console] says "Blocked opening '' in a new window because the request was made in a sandboxed frame whose 'allow-popups' permission is not set."<br>
   <input type='button' onclick='parent.window.open()' value='parent.window.open()'/> => [Developer Tools console] "open is disabled"<br>
   <input type='button' onclick='window.location.reload()' value='Reload this iframe'/> => Top frame is reloaded to remove tamper<br>
-  <input type='button' onclick='removeAPIs()' value='removeAPIs'/> => More secure. <br>
+  <input type='button' onclick='removeAPIs()' value='removeAPIs'/> => Remove window.open API to be more secure. <br>
   <input type='button' onclick='window.open()' value='window.open()'/> => [Developer Tools console] "open is disabled"<br>
   <hr>
   output <input type="button" onclick="document.getElementById('result').innerHTML=''" value="clear"><br />
