@@ -3,8 +3,9 @@
   <script type="text/javascript" src="./frame.js"></script>
 </head>
 <body style="font-size:14px">
-  <input type='button' onclick='window.location.reload()' value='Reload this iframe'/> => Top frame is reloaded.<br>
-  <input type='button' onclick='window.location.href="https://canal874-electron-test-security-sandbox.netlify.app/internetresource.html"' value='Open https://.../internetresource.html here'/> => Top frame is reloaded, and [Main process output] says "did-start-navigate to invalid : https://canal874-electron-test-security-sandbox.netlify.app/internetresource.html"
-  
+  <input type='button' onclick='window.location.reload()' value='Reload this iframe'/> => Top frame is reloaded. Message box 'Navigate to valid url: ...'<br>
+  <input type='button' onclick='window.location.href="https://canal874-electron-test-security-sandbox.netlify.app/internetresource.html"' value='Open https://.../internetresource.html here'/> => Top frame is reloaded. Message box 'Navigate to *invalid* url : ...''<br>
+  <input type='button' onclick='createNewIframe()' value='Create local iframe here'/> => Top frame is reloaded. Message box 'Navigate to valid url: ...'<br>
+  <input type='button' onclick='createNewIframeInParent()' value='Create local iframe in parent'/> => Top frame is reloaded. Message box 'Navigate to valid url: ...'<br>
 </body>
 </html>

@@ -64,6 +64,18 @@ const removeAPIs = () => {
   });
 };
 
+const createNewIframe = () => {
+  const iframe = document.createElement('iframe');
+  iframe.src = './frame06b.html';
+  document.body.appendChild(iframe);
+};
+
+const createNewIframeInParent = () => {
+  const iframe = parent.document.createElement('iframe');
+  iframe.src = './frame06b.html';
+  parent.document.body.appendChild(iframe);
+};
+
 const onload = () => {
   // Remove APIs
   /* 

@@ -1,11 +1,11 @@
 {
-  "name": "electron-test-lot-of-iframes",
-  "productName": "electron-test-lot-of-iframes",
-  "description": "My Electron application description",
+  "name": "electron-test-security-sandbox",
+  "productName": "electron-test-security-sandbox",
+  "description": "Checking security risk of electron app",
   "keywords": [],
   "main": "./main.js",
   "version": "1.0.0",
-  "author": "kubota",
+  "author": "Hidekazu Kubota",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",

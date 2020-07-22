@@ -152,8 +152,8 @@
     <h2>(E) Page navigation</h2>
     <p>
     Sandbox with no allow-top-navigation<br>
-    &lt;iframe sandbox='allow-same-origin allow-scripts allow-top-navigation' src='./frame_navigation.html' /&gt;
-    Page navigation and reload() are blocked in Main process by preventing 'will-navigate' event.<br>    
+    &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame_navigation.html' /&gt;
+    Page navigation is blocked by sandbox.<br>    
     </p>
     [childFrame05]<br>
     <iframe id='childFrame05' src='./frame05.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:250px; border: 1px solid black;'></iframe>
@@ -164,7 +164,7 @@
     <p>
     Sandbox with allow-top-navigation<br>
     &lt;iframe sandbox='allow-same-origin allow-scripts allow-top-navigation' src='./frame_navigation.html' /&gt;
-    Page navigation and reload() are blocked in Main process by preventing 'will-navigate' event.<br>    
+    Page navigation is blocked in Main process by preventing 'will-navigate' event.<br>
     </p>
     [childFrame06]<br>    
     <iframe id='childFrame06' src='./frame06.html' sandbox='allow-same-origin allow-scripts allow-top-navigation' style='width:700px; height:150px; border: 1px solid black;'></iframe>
@@ -174,7 +174,8 @@
         <br/><br />   
     <h2>(G) Page navigation in iframe</h2>
     <p>
-    &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame07.html' /&gt;
+    &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame07.html' /&gt;<br>
+    Page navigation is interrupted and force reloaded in Main process by preventing 'did-start-navigation' event.<br>
     </p>
     [childFrame07]<br>    
     <iframe id='childFrame07' src='./frame07.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:150px; border: 1px solid black;'></iframe>

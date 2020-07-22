@@ -3,7 +3,7 @@
   <script type="text/javascript" src="./frame.js"></script>
 </head>
 <body style="font-size:14px">
-  <input type='button' onclick='parent.location.reload()' value='Reload parent' /> => [Main process console] "reload() is not permitted"<br>
-  <input type='button' onclick='parent.location.href="https://google.com/"' value='Open https://google.com/ in parent'/> => [Main process console]  "Page navigation is not permitted"<br>
+  <input type='button' onclick='parent.location.reload()' value='Reload parent' /> => Message box 'Top frame is reloaded'<br>
+  <input type='button' onclick='parent.location.href="https://google.com/"' value='Open https://google.com/ in parent'/> => Message box "Page navigation in top frame is not permitted"<br>
 </body>
 </html>
