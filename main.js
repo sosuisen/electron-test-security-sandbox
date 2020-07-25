@@ -18,16 +18,17 @@ const showMessage = (window, title, txt) => {
     });
 };
 
-app.on('ready', function () {
+
+const createNewWindow = (startFileName, options) => {
   const cardWindow = new BrowserWindow({
     width: 900,
     height: 900,
     webPreferences: {
     }
-  })
+  });
 
   const indexUrl = url.format({
-            pathname: path.join(__dirname, 'index.html'),
+            pathname: path.join(__dirname, startFileName),
             protocol: 'file:',
             slashes: true,
           });
@@ -36,6 +37,10 @@ app.on('ready', function () {
   cardWindow.webContents.openDevTools();
   cardWindow.show();
 
+
+  if(/allow-navigation/.test(options)){
+    return;
+  }
 
   cardWindow.webContents.on('did-finish-load', () => {
     const checkNavigation = (event, url) => {
@@ -87,6 +92,9 @@ app.on('ready', function () {
       event.preventDefault();
     }
   })
-  
-});
+}; 
 
+app.on('ready', function () {
+  createNewWindow('index.html', '');
+  createNewWindow('index2.html', 'allow-navigation');
+});

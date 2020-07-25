@@ -113,6 +113,15 @@ const removeGlobalProperties = () => {
   }
 }
 
+
+const rewriteCSP = () => {
+  document.getElementsByName('csp')[0].setAttribute('content', '');
+};
+
+const loadHTTPSresource = (id, url) => {
+  document.getElementById(id).src = url;
+};
+
 const onload = () => {
   console.log('loaded');
   result = document.getElementById("result");

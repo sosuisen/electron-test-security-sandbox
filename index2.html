@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name='csp' http-equiv="Content-Security-Policy" content="default-src file:; style-src 'unsafe-inline'; script-src file: 'unsafe-inline'; ">
+    <title>Hello World!</title>
+    <script type='text/javascript' src='./renderer.js'></script>
+  </head>
+  <body>
+    <div style="position: fixed; top:0px; padding-top: 10px; background-color: white;">
+    [Top output]
+    <input
+      type="button"
+      onclick="document.getElementById('result').innerHTML=''"
+      value="clear"
+    />
+    <div
+      id="result"
+      style="width:700px; height:70px; border:1px solid black; overflow-y: scroll"
+    ></div>
+  </div>
+
+  <h1 style="margin-top: 100px;">&lt;iframe&gt; security playground for Electron (2)</h1>
+  <p>
+    Use Contents-Security-Policy 
+  </p>
+    <h2>(C2) Load file:// resource on iframe with Content Security Policy</h2>    
+    <p>
+      &lt;meta http-equiv="Content-Security-Policy" content="default-src file:; style-src 'unsafe-inline';"&gt;
+    </p>
+    <p>
+      Sandbox with allow-same-origin<br>
+      &lt;iframe sandbox='allow-same-origin allow-scripts' src='./frame03.html' /&gt;
+    </p>
+    <input
+      type='button'
+      onclick='loadHTTPSresource("childFrame2-1", "https://canal874-electron-test-security-sandbox.netlify.app/frame.html")'
+      value="Load https:// resource"
+    /> => Error. Dynamically rewritten CSP is not applied to the document.<br>
+    [Developer Tools console] "Refused to frame 'https://canal874-electron-test-security-sandbox.netlify.app/' because it violates the following Content Security Policy directive: "default-src file:". Note that 'frame-src' was not explicitly set, so 'default-src' is used as a fallback."
+    <br>
+    <input
+      type='button'
+      onclick='rewriteCSP()'
+      value="Delete Content Security Policy"
+    /> => CSP is deleted.<br>
+    <input
+      type='button'
+      onclick='loadHTTPSresource("childFrame2-1", "https://canal874-electron-test-security-sandbox.netlify.app/frame.html")'
+      value="Load https:// resource"
+    /> => Error. Dynamically rewritten CSP is not applied to the document.<br>
+    [Developer Tools console] "Refused to frame 'https://canal874-electron-test-security-sandbox.netlify.app/' because it violates the following Content Security Policy directive: "default-src file:". Note that 'frame-src' was not explicitly set, so 'default-src' is used as a fallback."
+        <br><br>
+    [childFrame2-1]<br>
+    <iframe id='childFrame2-1' src='./frame2-1.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:250px; border: 1px solid black;'></iframe>
+    <br/><br />
+
+
+    <h2>(D2) Load https:// resource on iframe with Content Security Policy</h2>
+    <p>
+      &lt;meta http-equiv="Content-Security-Policy" content="default-src file:; style-src 'unsafe-inline';"&gt;
+    </p>
+    <p>
+      Sandbox with allow-same-origin<br>
+      &lt;iframe sandbox='allow-same-origin allow-scripts' src='https://canal874-electron-test-security-sandbox.netlify.app/frame.html' /&gt;
+    </p>
+    <p style="color: red">
+      [Developer Tools console] "Refused to frame 'https://canal874-electron-test-security-sandbox.netlify.app/' because it violates the following Content Security Policy directive: "default-src file:". Note that 'frame-src' was not explicitly set, so 'default-src' is used as a fallback."
+    </p>
+    <input
+      type='button'
+      onclick='rewriteCSP()'
+      value="Delete Content Security Policy"
+    /> => CSP is deleted.<br>
+    <input
+      type='button'
+      onclick='loadHTTPSresource("childFrame2-2", "https://canal874-electron-test-security-sandbox.netlify.app/frame.html")'
+      value="Load https:// resource"
+    /> => Error. Dynamically rewritten CSP is not applied to the document.<br>
+    [Developer Tools console] "Refused to frame 'https://canal874-electron-test-security-sandbox.netlify.app/' because it violates the following Content Security Policy directive: "default-src file:". Note that 'frame-src' was not explicitly set, so 'default-src' is used as a fallback."
+    <br>
+    <br>
+    [childFrame2-2]<br>    
+    <iframe id='childFrame2-2' src='https://canal874-electron-test-security-sandbox.netlify.app/frame.html' sandbox='allow-same-origin allow-scripts' style='width:700px; height:300px; border: 1px solid black;'></iframe>
+
+
+     </body>
+
+
+</html>
